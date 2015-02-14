@@ -34,8 +34,3 @@ std::uint64_t ChronoWrapper::epochTimeMillis()
     //return in milliseconds
     return millis.count();
 }
-
-
-
-
-
