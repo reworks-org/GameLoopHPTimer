@@ -1,0 +1,1 @@
+Small wrapper around std::chrono that implements some needed functions more easily.
