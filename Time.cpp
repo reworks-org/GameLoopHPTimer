@@ -14,23 +14,17 @@ std::uint64_t ChronoWrapper::sysTime()
     auto curTime = Chrono::now();
     
     //get current time since epoch from curTime and return in nanoseconds
-    std::uint64_t nanos = duration_cast<nanoseconds>(curTime.time_since_epoch()).count();
-    
-    //return value
-    return nanos;
+    return duration_cast<nanoseconds>(curTime.time_since_epoch()).count();
 }
 
 std::uint64_t ChronoWrapper::epochTimeMillis()
 {
-    //get current time
+    //get current time from system clock
     auto curTime  = system_clock::now();
     
-    //get time since epoch
+    //get time since epoch (1970)
     auto since_epoch = curTime.time_since_epoch();
     
-    //auto define millis type then retrive casted data
-    auto millis = duration_cast<milliseconds>(since_epoch);
-    
-    //return in milliseconds
-    return millis.count();
+    //cast to milliseconds and return
+    return duration_cast<milliseconds>(since_epoch).count();
 }
