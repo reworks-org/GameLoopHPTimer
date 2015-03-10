@@ -29,16 +29,13 @@ public:
     }
     
     //returns time since 1970 in milliseconds. This is more accurate than <ctime>'s time() which returns in seconds. This is the same as Java's Date().getTime() or System.currentTimeMillis()
-    std::uint64_t timeMillis()
+    std::uint64_t sysTimeMillis()
     {
         //get current time from system clock
-        auto curTime  = system_clock::now();
-        
-        //get time since epoch (1970)
-        auto since_epoch = curTime.time_since_epoch();
+        auto curTime = system_clock::now().time_since_epoch();
         
         //cast to milliseconds and return
-        return duration_cast<milliseconds>(since_epoch).count();
+        return duration_cast<milliseconds>(curTime).count();
     }
 };
 
