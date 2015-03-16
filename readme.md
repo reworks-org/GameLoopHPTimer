@@ -1,2 +1,2 @@
-Small wrapper around std::chrono that implements some needed functions more easily. It basically emulates javas System.NanoTime() and System.GetTimeMillis()
--- Requires a C++11 (C++0x) compliant compiler that supports std::chrono and the 'auto' type.
+Small wrapper around std::chrono that implements some needed functions more easily. It's similar to Java's System.NanoTime() and System.GetTimeMillis().
+- Requires a C++11 (C++0x) compliant compiler that supports std::chrono.
