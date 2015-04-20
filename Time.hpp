@@ -11,7 +11,8 @@
 using namespace std;
 using namespace chrono;
 
-class ChronoTime {
+class Time
+{
 public:
 	inline uint64_t nanoTime()
 	{
