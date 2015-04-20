@@ -1,39 +1,25 @@
-//  Time.hpp
 //
-//  Free for public and private use. No credit required
+//	Time.hpp
+//	A class around std::chrono that can be used for high precision timers for gameloops
 //
-//  Single header for everything. Just add to your project and away you go!
 
-//inclusion guards. use #pragma once if you prefer that...
-#ifndef __TIME__CHRONO__
-#define __TIME__CHRONO__
+#pragma once
 
 #include <chrono>
-#include <cstdint>
+#include <cstdint> //std::uint64_t
 
-using namespace std::chrono; //to keep things clean. you can remove if you want, but prepare to have to add it to all the lines of code.
+using namespace std;
+using namespace chrono;
 
-class ChronoWrapper //rename this if you want. i couldnt think of anything better.
-{
-    //defines a type Chrono of namespace std::chrono::high_resolution_clock (nanosecond timer)
-    typedef high_resolution_clock HRC;
-    typedef system_clock SC; //also adds this if your using chrono for other things aswell.
-    
+class ChronoTime {
 public:
-    //we use an unsigned 64bit integer because its the largest interger to use for storing these huge numbers
-    //returns the current system time in nanoseconds (use for gameloops over functions like SDL_GetTicks() ). This is the same as Java's System.nanoTime()
-    inline std::uint64_t nanoTime()
-    {
-        //get current time since epoch from curTime and return in nanoseconds
-        return duration_cast<nanoseconds>(HRC::now().time_since_epoch()).count();
-    }
-    
-    //returns time since 1970 in milliseconds. This is more accurate than <ctime>'s time() which returns in seconds. This is the same as Java's Date().getTime() or System.currentTimeMillis()
-    inline std::uint64_t sysTimeMillis()
-    {
-        //cast to milliseconds and return
-        return duration_cast<milliseconds>(SC::now().time_since_epoch()).count();
-    }
-};
+	inline uint64_t nanoTime()
+	{
+		return duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count();
+	}
 
-#endif
+	inline uint64_t sysTime()
+	{
+		return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+	}
+};

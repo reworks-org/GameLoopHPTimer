@@ -1,2 +1,2 @@
-Small wrapper around std::chrono that implements some needed functions more easily. It's similar to Java's System.NanoTime() and System.GetTimeMillis().
+Small wrapper around std::chrono for gameloops.
 - Requires a C++11 (C++0x) compliant compiler that supports std::chrono.
