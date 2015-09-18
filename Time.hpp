@@ -1,6 +1,6 @@
 //
 //	Time.hpp
-//	A class around std::chrono that can be used for high precision timers for gameloops
+//	A wrapper around std::chrono that can be used for high precision timers for gameloops
 //
 
 #pragma once
@@ -11,9 +11,8 @@
 using namespace std;
 using namespace chrono;
 
-class Time
+struct Time
 {
-public:
 	inline uint64_t nanoTime()
 	{
 		return duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count();
@@ -23,4 +22,4 @@ public:
 	{
 		return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 	}
-};
+} Time;
