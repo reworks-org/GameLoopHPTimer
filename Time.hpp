@@ -6,19 +6,18 @@
 #pragma once
 
 #include <chrono>
-#include <cstdint> //std::uint64_t
+#include <cstdint>
 
-using namespace std;
-using namespace chrono;
+using namespace std::chrono;
 
 struct Time
 {
-	inline uint64_t nanoTime()
+	inline std::uint64_t nanoTime()
 	{
 		return duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count();
 	}
 
-	inline uint64_t sysTime()
+	inline std::uint64_t sysTime()
 	{
 		return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
 	}
