@@ -3,7 +3,8 @@
 //	Two functions that can be used for high precision timers for gameloops
 //
 
-#ifndef 
+#ifndef HP_TIMERFUNCS_HPP_
+#define HP_TIMERFUNCS_HPP_
 
 #include <chrono>
 #include <cstdint>
@@ -20,3 +21,5 @@ namespace Timee
 		return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	}
 }
+
+#endif
