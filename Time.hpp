@@ -1,24 +1,22 @@
 //
 //	Time.hpp
-//	A wrapper around std::chrono that can be used for high precision timers for gameloops
+//	Two functions that can be used for high precision timers for gameloops
 //
 
-#pragma once
+#ifndef 
 
 #include <chrono>
 #include <cstdint>
 
-using namespace std::chrono;
-
-struct Time
+namespace Timee
 {
 	inline std::uint64_t nanoTime()
 	{
-		return duration_cast<nanoseconds>(high_resolution_clock::now().time_since_epoch()).count();
+		return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 	}
 
 	inline std::uint64_t sysTime()
 	{
-		return duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count();
+		return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	}
-} Time;
+}
